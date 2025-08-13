@@ -463,6 +463,140 @@
             font-weight: 500;
         }
 
+        .file-attachment, .music-attachment {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 12px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            max-width: 280px;
+        }
+
+        .user-message .file-attachment, .user-message .music-attachment {
+            background: var(--message-own);
+        }
+
+        .other-message .file-attachment, .other-message .music-attachment {
+            background: var(--message-other);
+        }
+
+        .ai-message .file-attachment, .ai-message .music-attachment {
+            background: var(--message-ai);
+        }
+
+.music-attachment {
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 10px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    max-width: 260px;
+    flex-wrap: wrap;
+}
+
+.music-attachment .play-btn {
+    width: 32px;
+    height: 32px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--accent-color);
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.music-attachment .play-btn:hover {
+    background: #f1f1f1;
+    transform: scale(1.1);
+}
+
+.music-attachment .play-btn.playing {
+    color: var(--voice-progress);
+}
+
+.music-attachment .waveform {
+    flex: 1;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    overflow: hidden;
+}
+
+.music-attachment .wave-bar {
+    width: 2px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    transition: height 0.3s ease;
+}
+
+.music-attachment .wave-bar.played {
+    background: var(--voice-progress);
+}
+
+.music-attachment .duration {
+    color: var(--text-color);
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.music-attachment a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 150px;
+}
+
+.music-attachment i {
+    font-size: 1rem;
+    color: var(--accent-color);
+}
+
+body.dark-mode .music-attachment {
+    background: #273859;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .music-attachment .play-btn {
+    background: #1f2b46;
+    color: #3498db;
+}
+
+body.dark-mode .music-attachment .play-btn:hover {
+    background: #273859;
+}
+
+body.dark-mode .music-attachment .wave-bar {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+body.dark-mode .music-attachment .duration {
+    color: #ecf0f1;
+}
+
+body.dark-mode .music-attachment a {
+    color: #3498db;
+}
+
+body.dark-mode .music-attachment i {
+    color: #3498db;
+}
+
         body.dark-mode .voice-note .play-btn {
             background: #1f2b46;
             color: #3498db;
@@ -492,7 +626,19 @@
             background: #1e3a1e;
         }
 
-        .image-loading, .audio-loading {
+        body.dark-mode .file-attachment, body.dark-mode .music-attachment {
+            background: #273859;
+        }
+
+        body.dark-mode .file-attachment a, body.dark-mode .music-attachment a {
+            color: #3498db;
+        }
+
+        body.dark-mode .file-attachment i, body.dark-mode .music-attachment i {
+            color: #3498db;
+        }
+
+        .image-loading, .audio-loading, .file-loading {
             max-width: 280px;
             height: 150px;
             background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
@@ -835,7 +981,7 @@
             box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
         }
 
-        body.dark-mode .image-loading, body.dark-mode .audio-loading {
+        body.dark-mode .image-loading, body.dark-mode .audio-loading, body.dark-mode .file-loading {
             background: linear-gradient(90deg, #2a3654 25%, #1f2b46 50%, #2a3654 75%);
             background-size: 200% 100%;
             color: #666;
@@ -984,7 +1130,7 @@
                 right: auto;
             }
 
-            .message-text img, .message-text .voice-note {
+            .message-text img, .message-text .voice-note, .message-text .file-attachment, .message-text .music-attachment {
                 max-width: 240px;
             }
 
@@ -1032,7 +1178,7 @@
                 font-size: 0.7rem;
             }
 
-            .message-text img, .message-text .voice-note {
+            .message-text img, .message-text .voice-note, .message-text .file-attachment, .message-text .music-attachment {
                 max-width: 200px;
             }
         }
@@ -1073,6 +1219,37 @@
             0% { transform: scale(0.8); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
+
+        .file-attachment, .music-attachment {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 12px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    max-width: 280px;
+}
+
+.music-attachment {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+body.dark-mode .file-attachment, body.dark-mode .music-attachment {
+    background: #273859;
+}
+
+body.dark-mode .music-attachment {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
     </style>
 </head>
 <body>
@@ -1112,7 +1289,7 @@
         
         <div class="chat-input">
             <button id="attach-button" class="attach-button">
-                <i class="fas fa-image"></i>
+                <i class="fas fa-paperclip"></i>
             </button>
             <button id="voice-button" class="voice-button">
                 <i class="fas fa-microphone"></i>
@@ -1129,7 +1306,7 @@
         </div>
     </div>
 
-    <input type="file" id="file-input" accept="image/*" style="display: none;">
+    <input type="file" id="file-input" accept="image/*,audio/mpeg,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/html,application/msword,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" style="display: none;">
 
     <!-- Confirmation Modal -->
     <div class="modal" id="confirmation-modal">
@@ -1434,6 +1611,16 @@
                     resolve(compressedDataURL);
                 };
                 img.src = URL.createObjectURL(file);
+            });
+        }
+
+        // File conversion to base64
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+                reader.readAsDataURL(file);
             });
         }
 
@@ -1798,7 +1985,7 @@
             messageInput.dispatchEvent(new Event('input'));
         });
 
-        // Image attachment handling
+        // File attachment handling
         attachButton.addEventListener('click', () => {
             fileInput.click();
         });
@@ -1806,25 +1993,48 @@
         fileInput.addEventListener('change', async (e) => {
             const file = e.target.files[0];
             if (file) {
-                if (!file.type.startsWith('image/')) {
-                    alert('Hanya file gambar yang diperbolehkan.');
+                const allowedTypes = [
+                    'image/jpeg', 'image/png', 'image/gif',
+                    'audio/mpeg',
+                    'application/pdf',
+                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                    'application/msword',
+                    'text/html',
+                    'application/vnd.ms-excel',
+                    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                ];
+                if (!allowedTypes.includes(file.type)) {
+                    alert('Hanya file gambar (JPEG, PNG, GIF), MP3, PDF, DOC, DOCX, HTML, XLS, dan XLSX yang diperbolehkan.');
                     fileInput.value = '';
                     return;
                 }
                 if (file.size > 5 * 1024 * 1024) { // 5MB limit
-                    alert('Ukuran gambar terlalu besar. Maksimal 5MB.');
+                    alert('Ukuran file terlalu besar. Maksimal 5MB.');
                     fileInput.value = '';
                     return;
                 }
 
                 const loadingElement = document.createElement('div');
-                loadingElement.className = 'image-loading';
-                loadingElement.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengunggah gambar...';
+                loadingElement.className = 'file-loading';
+                loadingElement.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengunggah file...';
                 chatMessages.appendChild(loadingElement);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
 
                 try {
-                    const compressedImage = await compressImage(file);
+                    let fileData;
+                    let fileType;
+
+                    if (file.type.startsWith('image/')) {
+                        fileData = await compressImage(file);
+                        fileType = 'image';
+                    } else if (file.type === 'audio/mpeg') {
+                        fileData = await fileToBase64(file);
+                        fileType = 'music';
+                    } else {
+                        fileData = await fileToBase64(file);
+                        fileType = 'file';
+                    }
+
                     const caption = messageInput.value.trim();
 
                     if (loadingElement.parentNode) {
@@ -1832,36 +2042,48 @@
                     }
 
                     const newMessageRef = messagesRef.push();
-                    newMessageRef.set({
+                    const messageData = {
                         id: newMessageRef.key,
                         username: username,
                         userRole: userRole,
                         userId: userId,
                         text: caption,
-                        image: compressedImage,
                         timestamp: firebase.database.ServerValue.TIMESTAMP
-                    });
+                    };
+
+                    if (fileType === 'image') {
+                        messageData.image = fileData;
+                    } else if (fileType === 'music') {
+                        messageData.music = fileData;
+                        messageData.filename = file.name;
+                    } else {
+                        messageData.file = fileData;
+                        messageData.filename = file.name;
+                        messageData.fileType = file.type; // Store file type for icon rendering
+                    }
+
+                    newMessageRef.set(messageData);
 
                     messageInput.value = '';
                     messageInput.style.height = 'auto';
                     fileInput.value = '';
 
-                    // Show notification for image message
-                    showNotification(`${username} sent an image`, {
-                        body: caption || 'New image received',
+                    // Show notification for file message
+                    showNotification(`${username} sent a ${fileType}`, {
+                        body: caption || `New ${fileType} received: ${file.name}`,
                         icon: '/path/to/icon.png'
                     });
                 } catch (error) {
-                    console.error('Image upload error:', error);
+                    console.error('File upload error:', error);
                     if (loadingElement.parentNode) {
                         loadingElement.remove();
                     }
-                    alert('Gagal mengunggah gambar. Silakan coba lagi.');
+                    alert('Gagal mengunggah file. Silakan coba lagi.');
                 }
             }
         });
 
-        // Render message with voice note support
+        // Render message with voice note, file, and music support
         function renderMessage(messageData, isNew = false) {
             const messageElement = document.createElement('div');
             const messageClass = messageData.isAI ? 'ai-message' : 
@@ -1898,6 +2120,39 @@
                 `;
             }
 
+            if (messageData.file) {
+                let iconClass = 'fas fa-file';
+                if (messageData.fileType === 'application/pdf') {
+                    iconClass = 'fas fa-file-pdf';
+                } else if (messageData.fileType === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || messageData.fileType === 'application/msword') {
+                    iconClass = 'fas fa-file-word';
+                } else if (messageData.fileType === 'text/html') {
+                    iconClass = 'fas fa-file-code';
+                } else if (messageData.fileType === 'application/vnd.ms-excel' || messageData.fileType === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+                    iconClass = 'fas fa-file-excel';
+                }
+                messageContent += `
+                    <div class="file-attachment">
+                        <i class="${iconClass}"></i>
+                        <a href="${messageData.file}" download="${messageData.filename}">${messageData.filename}</a>
+                    </div>
+                `;
+            }
+
+            if (messageData.music) {
+                messageContent += `
+                    <div class="music-attachment">
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="waveform"></div>
+                        <span class="duration">00:00</span>
+                        <audio src="${messageData.music}"></audio>
+                        <a href="${messageData.music}" download="${messageData.filename}">${messageData.filename}</a>
+                    </div>
+                `;
+            }
+
             messageElement.innerHTML = `
                 <div class="message-info">
                     ${messageData.isAI ? '<i class="fas fa-robot"></i>' : '<i class="fas fa-user"></i>'}
@@ -1915,8 +2170,8 @@
                 </div>
             `;
 
-            // Voice note playback
-            if (messageData.audio) {
+            // Voice note and music playback
+            if (messageData.audio || messageData.music) {
                 const audio = messageElement.querySelector('audio');
                 const playBtn = messageElement.querySelector('.play-btn');
                 const waveform = messageElement.querySelector('.waveform');
@@ -2001,42 +2256,316 @@
                 messageElement.style.animation = 'fadeOut 0.3s forwards';
                 setTimeout(() => {
                     if (messageElement.parentNode) {
-                        messageElement.remove();
+                                        messageElement.remove();
                     }
                 }, 300);
             }
         });
 
-        // Cleanup old online users
-        setInterval(() => {
-            const currentTime = Date.now();
-            onlineRef.once('value', (snapshot) => {
-                const users = snapshot.val() || {};
-                Object.keys(users).forEach((id) => {
-                    if (currentTime - users[id].timestamp > 30000) {
-                        onlineRef.child(id).remove();
-                    }
-                });
-            });
-        }, 60000);
+        // Handle window focus for notifications
+        let isWindowFocused = true;
 
-        // Request notification permission on load
-        window.addEventListener('load', async () => {
-            await requestNotificationPermission();
-            if ('serviceWorker' in navigator) {
-                try {
-                    await navigator.serviceWorker.register('/sw.js');
-                    console.log('Service Worker registered');
-                } catch (error) {
-                    console.error('Service Worker registration failed:', error);
+        window.addEventListener('focus', () => {
+            isWindowFocused = true;
+        });
+
+        window.addEventListener('blur', () => {
+            isWindowFocused = false;
+        });
+
+        // Initialize notification permission
+        (async () => {
+            const hasPermission = await requestNotificationPermission();
+            if (!hasPermission) {
+                console.log('Notification permission denied');
+            }
+        })();
+
+        // Auto-scroll to bottom when new messages are added
+        const observer = new MutationObserver(() => {
+            if (chatMessages.scrollHeight - chatMessages.scrollTop - chatMessages.clientHeight < 200) {
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        });
+
+        observer.observe(chatMessages, { childList: true });
+
+        // Cleanup on page unload
+        window.addEventListener('unload', () => {
+            const userRef = onlineRef.child(userId);
+            userRef.remove();
+        });
+
+        // Handle file icon based on file type
+        function getFileIcon(fileType) {
+            switch (fileType) {
+                case 'application/pdf':
+                    return 'fas fa-file-pdf';
+                case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+                case 'application/msword':
+                    return 'fas fa-file-word';
+                case 'text/html':
+                    return 'fas fa-file-code';
+                case 'application/vnd.ms-excel':
+                case 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
+                    return 'fas fa-file-excel';
+                default:
+                    return 'fas fa-file';
+            }
+        }
+
+        // Prevent multiple rapid clicks on send button
+        let isSending = false;
+        sendButton.addEventListener('click', async () => {
+            if (isSending) return;
+            isSending = true;
+            await sendMessage();
+            setTimeout(() => {
+                isSending = false;
+            }, 500);
+        });
+
+        // Auto-resize textarea on paste
+        messageInput.addEventListener('paste', function() {
+            setTimeout(() => {
+                this.style.height = 'auto';
+                this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+            }, 0);
+        });
+
+        // Handle keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === '/') {
+                e.preventDefault();
+                messageInput.value = '/ai ';
+                messageInput.focus();
+                messageInput.dispatchEvent(new Event('input'));
+            }
+        });
+
+        // Optimize performance by limiting rendered messages
+        const maxMessages = 100;
+        messagesRef.on('value', (snapshot) => {
+            const messages = [];
+            snapshot.forEach(child => {
+                messages.push({ key: child.key, ...child.val() });
+            });
+            if (messages.length > maxMessages) {
+                const messagesToRemove = messages.slice(0, messages.length - maxMessages);
+                messagesToRemove.forEach(msg => {
+                    messagesRef.child(msg.key).remove();
+                });
+            }
+        });
+
+        // Handle visibility of messages based on scroll
+        function optimizeMessageVisibility() {
+            const messages = chatMessages.querySelectorAll('.message');
+            const viewportHeight = chatMessages.clientHeight;
+            const scrollTop = chatMessages.scrollTop;
+
+            messages.forEach(message => {
+                const rect = message.getBoundingClientRect();
+                const messageTop = rect.top + scrollTop - chatMessages.offsetTop;
+                const messageBottom = messageTop + rect.height;
+
+                if (messageBottom < scrollTop - 100 || messageTop > scrollTop + viewportHeight + 100) {
+                    message.style.display = 'none';
+                } else {
+                    message.style.display = 'block';
+                }
+            });
+        }
+
+        chatMessages.addEventListener('scroll', optimizeMessageVisibility);
+        window.addEventListener('resize', optimizeMessageVisibility);
+
+        // Initialize visibility optimization
+        optimizeMessageVisibility();
+
+        // Handle file preview for certain types
+        async function previewFile(fileData, fileType) {
+            if (fileType.startsWith('image/')) {
+                return `<img src="${fileData}" alt="Image Preview" onclick="showImageModal(this.src)">`;
+            } else if (fileType === 'text/html') {
+                // Display a snippet of HTML content
+                const text = await (await fetch(fileData)).text();
+                return `<pre class="code-block">${text.slice(0, 200)}${text.length > 200 ? '...' : ''}</pre>`;
+            } else {
+                return '';
+            }
+        }
+
+        // Update message rendering for file previews
+        messagesRef.on('child_added', async (snapshot) => {
+            const messageData = snapshot.val();
+            const messageElement = await renderMessage({ ...messageData, id: snapshot.key }, true);
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Add file preview if applicable
+            if (messageData.file && (messageData.fileType.startsWith('image/') || messageData.fileType === 'text/html')) {
+                const previewContent = await previewFile(messageData.file, messageData.fileType);
+                if (previewContent) {
+                    const messageText = messageElement.querySelector('.message-text');
+                    messageText.insertAdjacentHTML('beforeend', previewContent);
                 }
             }
         });
 
-        // Handle window close to clean up
-        window.addEventListener('beforeunload', () => {
-            onlineRef.child(userId).remove();
+        // Handle double-click to edit own messages
+        function enableMessageEditing() {
+            chatMessages.addEventListener('dblclick', (e) => {
+                const messageElement = e.target.closest('.message.user-message');
+                if (!messageElement) return;
+
+                const messageId = messageElement.dataset.messageId;
+                const messageTextElement = messageElement.querySelector('.message-text');
+                const originalText = messageTextElement.textContent.trim();
+
+                if (!messageTextElement || messageElement.querySelector('img, .voice-note, .file-attachment, .music-attachment')) return;
+
+                const textarea = document.createElement('textarea');
+                textarea.value = originalText;
+                textarea.style.width = '100%';
+                textarea.style.minHeight = '60px';
+                textarea.style.borderRadius = '8px';
+                textarea.style.padding = '8px';
+                textarea.style.border = '1px solid #ddd';
+
+                messageTextElement.innerHTML = '';
+                messageTextElement.appendChild(textarea);
+                textarea.focus();
+
+                function saveEdit() {
+                    const newText = textarea.value.trim();
+                    if (newText && newText !== originalText) {
+                        messagesRef.child(messageId).update({
+                            text: newText,
+                            edited: true,
+                            editedTimestamp: firebase.database.ServerValue.TIMESTAMP
+                        });
+                    }
+                    messageTextElement.innerHTML = newText.replace(/\n/g, '<br>') + (newText && newText !== originalText ? '<span style="font-size: 0.7em; color: #666;"> (diedit)</span>' : '');
+                }
+
+                textarea.addEventListener('blur', saveEdit);
+                textarea.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        saveEdit();
+                    }
+                });
+            });
+        }
+
+        enableMessageEditing();
+
+        // Handle edited messages
+        messagesRef.on('child_changed', (snapshot) => {
+            const messageData = snapshot.val();
+            const messageElement = document.querySelector(`[data-message-id="${snapshot.key}"]`);
+            if (messageElement) {
+                const newMessageElement = renderMessage({ ...messageData, id: snapshot.key });
+                if (messageData.edited) {
+                    const messageText = newMessageElement.querySelector('.message-text');
+                    messageText.innerHTML += '<span style="font-size: 0.7em; color: #666;"> (diedit)</span>';
+                }
+                messageElement.replaceWith(newMessageElement);
+                optimizeMessageVisibility();
+            }
         });
+
+        // Initialize service worker for notifications
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').then(registration => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            }).catch(error => {
+                console.error('Service Worker registration failed:', error);
+            });
+        }
+
+        // Handle context menu for messages
+        chatMessages.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            const messageElement = e.target.closest('.message');
+            if (!messageElement) return;
+
+            const messageId = messageElement.dataset.messageId;
+            const messageUsername = messageElement.querySelector('.message-info').textContent.split(' ')[0];
+
+            if ((userRole === 'admin' && adminVerified) || messageUsername === username) {
+                showModal(
+                    'Hapus Pesan',
+                    'Apakah Anda yakin ingin menghapus pesan ini?',
+                    'Ya, Hapus',
+                    () => deleteMessage(messageId, messageElement, messageUsername)
+                );
+            }
+        });
+
+        // Handle file drag and drop
+        chatMessages.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            chatMessages.style.backgroundColor = 'rgba(52, 152, 219, 0.1)';
+        });
+
+        chatMessages.addEventListener('dragleave', () => {
+            chatMessages.style.backgroundColor = '';
+        });
+
+        chatMessages.addEventListener('drop', async (e) => {
+            e.preventDefault();
+            chatMessages.style.backgroundColor = '';
+            const file = e.dataTransfer.files[0];
+            if (file) {
+                fileInput.files = e.dataTransfer.files;
+                const event = new Event('change');
+                fileInput.dispatchEvent(event);
+            }
+        });
+
+        // Handle input focus styling
+        messageInput.addEventListener('focus', () => {
+            messageInput.parentElement.style.borderColor = 'var(--accent-color)';
+        });
+
+        messageInput.addEventListener('blur', () => {
+            messageInput.parentElement.style.borderColor = '#ddd';
+        });
+
+        // Cleanup old online statuses
+        onlineRef.on('value', (snapshot) => {
+            const now = Date.now();
+            snapshot.forEach(child => {
+                const userData = child.val();
+                if (userData.timestamp && now - userData.timestamp > 60000) {
+                    onlineRef.child(child.key).remove();
+                }
+            });
+        });
+
+        // Handle window resize for textarea
+        window.addEventListener('resize', () => {
+            messageInput.style.height = 'auto';
+            messageInput.style.height = Math.min(messageInput.scrollHeight, 120) + 'px';
+        });
+
+        // Initialize chat
+        (async () => {
+            // Ensure initial scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Request notification permission
+            await requestNotificationPermission();
+
+            // Set initial online status
+            onlineRef.child(userId).set({
+                username: username,
+                role: userRole,
+                timestamp: firebase.database.ServerValue.TIMESTAMP
+            });
+        })();
     </script>
 </body>
 </html>
